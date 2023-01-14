@@ -23,42 +23,48 @@ startButton.addEventListener("click", function() {
         }
   
     }, 1000);
+    // remove all text from start-screen, so the page is empty
+    startScreen.textContent = '';
     displayQuestions()
   });
 
-// displayQuestions()
+  
 
 var questionTitle = document.getElementById("question-title");
 var questionChoices = document.getElementById("choices");
 var questions = document.getElementById("questions");
-var h1 = document.getElementById("h1");
-var p = document.getElementById("p");
-
+var questionIndex = 0;
 
 
 
 var displayQuestions = function(){
-    // remove all text from start-screen, so the page is empty
-    startScreen.textContent = '';
-   
-    // h1.classList.add("hide");
-    // p.classList.add("hide");
+    // creating variables for the wav sounds
+    const correct = new Audio("correct.wav");
+    const incorrect = new Audio("incorrect.wav");
    // delete the .hide class in css so questions appear
-    questions.classList.remove("hide")
-    // Iterate through questions array to display one question and its choices at a time
-    for (var i = 0; i < quizQuestions.length; i++) {
-        quizQuestions[i].question;
-        quizQuestions[i].choices;
-        // event listener for click. When clicked, change colour (event.currentTarget.set.attribute style)
-            // if current question's answer is wrong
-                //remove 15 seconds // timeEl-15
-                // incorrect.wav
-                //and go to next question
-            // else if it's correct, 
-                // correct.wav
-                //go to next question
+    questions.classList.remove("hide");
+    
 
-    }
+    // Iterate through questions array to display one question and its choices at a time
+    do {
+    for (var i = 0; i < quizQuestions.length; i++) {
+        quizQuestions[i].questionText.textContent;
+        quizQuestions[i].options.textContent;
+        // need to add event listener for click. When clicked, change colour (event.currentTarget.set.attribute style)
+            if (quizQuestions.options == correctAnswerIndex) {
+                alert("Correct");
+                correct.play()
+            }
+            else {
+                alert("Wrong");
+                timeEl-15;
+                incorrect.play();
+            }
+            questionIndex++
+    }}
+    while 
+        (questionIndex > quizQuestions.length ||  timeEl > 0);
+            // endQuiz function
 }
 
     // Questions contain buttons for each answer
@@ -69,5 +75,10 @@ var displayQuestions = function(){
 
 //The quiz should end when all questions are answered or the timer reaches 0.
 
+
+// function to add user's initials
     // When the game ends, it should display their score and give the user the ability to save their initials and their score
 
+
+    // storing 
+    var timeEl = localStorage.getItem("Points");
