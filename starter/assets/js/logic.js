@@ -10,7 +10,6 @@ var endScreen = document.getElementById("end-screen");
 
 
 startButton.addEventListener("click", function() {
-    displayQuestions()
     // Sets interval in variable
     var timerInterval = setInterval(function() {
       secondsLeft--;
@@ -24,21 +23,33 @@ startButton.addEventListener("click", function() {
         }
   
     }, 1000);
+    displayQuestions()
   });
+
+// displayQuestions()
 
 var questionTitle = document.getElementById("question-title");
 var questionChoices = document.getElementById("choices");
 var questions = document.getElementById("questions");
+var h1 = document.getElementById("h1");
+var p = document.getElementById("p");
+
+
 
 
 var displayQuestions = function(){
+    // remove all text from start-screen, so the page is empty
+    startScreen.textContent = '';
+   
+    // h1.classList.add("hide");
+    // p.classList.add("hide");
    // delete the .hide class in css so questions appear
     questions.classList.remove("hide")
     // Iterate through questions array to display one question and its choices at a time
     for (var i = 0; i < quizQuestions.length; i++) {
-        alert(quizQuestions[i].question);
-        alert(quizQuestions[i].choices);
-        // event listener
+        quizQuestions[i].question;
+        quizQuestions[i].choices;
+        // event listener for click. When clicked, change colour (event.currentTarget.set.attribute style)
             // if current question's answer is wrong
                 //remove 15 seconds // timeEl-15
                 // incorrect.wav
