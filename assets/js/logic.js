@@ -44,8 +44,10 @@ var displayQuestions = function(){
    // delete the .hide class in css so questions appear
     questions.classList.remove("hide");
 
-   quizQuestions[0].questionText);
-   console.log(quizQuestions[0].options);
+   questionTitle.textContent = quizQuestions[0].questionText;
+
+//    console.log(quizQuestions[0].questionText);
+//    console.log(quizQuestions[0].options);
     
 
     // // Iterate through questions array to display one question and its choices at a time
