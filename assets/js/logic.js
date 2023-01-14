@@ -34,38 +34,42 @@ var questionTitle = document.getElementById("question-title");
 var questionChoices = document.getElementById("choices");
 var questions = document.getElementById("questions");
 var questionIndex = 0;
-
+// var correct = new Audio(".assets/sfx/correct.wav");
+// var incorrect = new Audio(".assets/sfx/incorrect.wav");
 
 
 var displayQuestions = function(){
     // creating variables for the wav sounds
-    const correct = new Audio("correct.wav");
-    const incorrect = new Audio("incorrect.wav");
+
    // delete the .hide class in css so questions appear
     questions.classList.remove("hide");
+
+   quizQuestions[0].questionText);
+   console.log(quizQuestions[0].options);
     
 
-    // Iterate through questions array to display one question and its choices at a time
-    do {
-    for (var i = 0; i < quizQuestions.length; i++) {
-        quizQuestions[i].questionText.textContent;
-        quizQuestions[i].options.textContent;
-        // need to add event listener for click. When clicked, change colour (event.currentTarget.set.attribute style)
-            if (quizQuestions.options == correctAnswerIndex) {
-                alert("Correct");
-                correct.play()
-            }
-            else {
-                alert("Wrong");
-                timeEl-15;
-                incorrect.play();
-            }
-            questionIndex++
-    }}
-    while 
-        (questionIndex > quizQuestions.length ||  timeEl > 0);
-            // endQuiz function
+    // // Iterate through questions array to display one question and its choices at a time
+    // do {
+    // for (var i = 0; i < quizQuestions.length; i++) {
+    //     quizQuestions[i].questionText.textContent;
+    //     quizQuestions[i].options.textContent;
+    //     // need to add event listener for click. When clicked, change colour (event.currentTarget.set.attribute style)
+    //         if (quizQuestions.options == correctAnswerIndex) {
+    //             alert("Correct");
+    //             correct.play()
+    //         }
+    //         else {
+    //             alert("Wrong");
+    //             timeEl-15;
+    //             incorrect.play();
+    //         }
+    //         questionIndex++
+    // }}
+    // while 
+    //     (questionIndex > quizQuestions.length ||  timeEl > 0);
+    //         // endQuiz function
 }
+
 
     // Questions contain buttons for each answer
 
@@ -81,4 +85,4 @@ var displayQuestions = function(){
 
 
     // storing 
-    var timeEl = localStorage.getItem("Points");
+    // var seconds = localStorage.getItem("Points");
