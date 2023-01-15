@@ -3,7 +3,7 @@
 var quizQuestions = [
   {
     questionText: "1. Commonly used data types in Javascript DO NOT include:",
-    options: ["Strings", "Numbers", "Booleans;", "Alerts;"],
+    options: ["Strings", "Numbers", "Booleans", "Alerts;"],
     correctAnswerIndex: 3,
   },
   {

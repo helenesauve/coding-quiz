@@ -44,32 +44,40 @@ var displayQuestions = function(){
    // delete the .hide class in css so questions appear
     questions.classList.remove("hide");
 
-   questionTitle.textContent = quizQuestions[0].questionText;
+    // Iterate through questions array to display one question and its choices at a time
+    do {
+    for (var i = 0; i < quizQuestions.length; i++) {
+        questionTitle.textContent = quizQuestions[i].questionText;
+        // questionChoices.textContent = quizQuestions[0].options;
 
-//    console.log(quizQuestions[0].questionText);
-//    console.log(quizQuestions[0].options);
-    
+        let data = quizQuestions[0].options
+ 
+        let list = document.getElementById("choices");
+         
+        data.forEach((item)=>{
+          let li = document.createElement("button");
+          li.innerText = item;
+          list.appendChild(li);
+        })
 
-    // // Iterate through questions array to display one question and its choices at a time
-    // do {
-    // for (var i = 0; i < quizQuestions.length; i++) {
-    //     quizQuestions[i].questionText.textContent;
-    //     quizQuestions[i].options.textContent;
-    //     // need to add event listener for click. When clicked, change colour (event.currentTarget.set.attribute style)
-    //         if (quizQuestions.options == correctAnswerIndex) {
-    //             alert("Correct");
-    //             correct.play()
-    //         }
-    //         else {
-    //             alert("Wrong");
-    //             timeEl-15;
-    //             incorrect.play();
-    //         }
-    //         questionIndex++
-    // }}
-    // while 
-    //     (questionIndex > quizQuestions.length ||  timeEl > 0);
-    //         // endQuiz function
+
+       
+      
+        // need to add event listener for click. When clicked, change colour (event.currentTarget.set.attribute style)
+            if (quizQuestions.options == correctAnswerIndex) {
+                alert("Correct");
+                correct.play()
+            }
+            else {
+                alert("Wrong");
+                timeEl-15;
+                incorrect.play();
+            }
+            questionIndex++
+    }}
+    while 
+        (questionIndex > quizQuestions.length ||  timeEl > 0);
+            // endQuiz function
 }
 
 
