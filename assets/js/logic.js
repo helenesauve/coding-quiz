@@ -41,9 +41,11 @@ var displayQuestions = function () {
   // delete the .hide class in css so questions appear
   questions.classList.remove("hide");
 
+
   // Iterate through questions array to display one question and its choices at a time
 
   questionTitle.textContent = quizQuestions[questionIndex].questionText;
+  questionChoices.innerHTML = '';
   let askedQuestions = quizQuestions[questionIndex].options;
   // appending li to question choices
   askedQuestions.forEach((item) => {
@@ -57,8 +59,6 @@ var displayQuestions = function () {
 var checkAnswers = function (event) {
   event.stopPropagation();
   event.preventDefault();
-  console.log(event);
-  console.log(event.target);
   var feedbackEl = document.getElementById("feedback");
   if (
     event.target.innerHTML ===
@@ -73,8 +73,6 @@ var checkAnswers = function (event) {
     timeEl - 15;
     incorrect.play();
   }
-  //check if you're done with the quiz or out of time?
-  [0, 1, 2, 3] === 4;
 
   if (questionIndex === quizQuestions.length - 1 || secondsLeft <= 0) {
     quizEnd();
