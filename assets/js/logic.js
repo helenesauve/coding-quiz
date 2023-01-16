@@ -70,7 +70,7 @@ var checkAnswers = function (event) {
     correct.play();
   } else {
     feedbackEl.textContent = "Incorrect";
-    timeEl - 15;
+    secondsLeft -= 15
     incorrect.play();
   }
 
@@ -83,28 +83,28 @@ var checkAnswers = function (event) {
   displayQuestions();
 };
 
-// var quizEnd = function () {
-//     // unhide end-screen
-//   endScreen.classList.remove("hide");
+var quizEnd = function () {
+    // unhide end-screen
+  endScreen.classList.remove("hide");
 
-//   submitButton.addEventListener("click", function (event) {
-//     event.preventDefault();
-//     var initialsValue = initials.value;
-//     localStorage.setItem("Initials", initialsValue);
-//     // sending information to the highscores.html file
-//     window.location.href = "highscores.html";
-//   });
+  submitButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    var initialsValue = initials.value;
+    localStorage.setItem("Initials", initialsValue);
+    // sending information to the highscores.html file
+    window.location.href = "highscores.html";
+  });
 
-//   //getting information from index.html in highscore html
-//   const initials = localStorage.getItem("initials");
-//   document.getElementById("initials").textContent = initials;
-//   let initialsList = document.getElementById("highscores");
-//   // appending li to high scores submitted
-//   data.forEach((item) => {
-//     let liElement = document.createElement("li");
-//     liElement.innerText = item;
-//     initialsList.appendChild(liElement);
-//   });
-// };
+  //getting information from index.html in highscore html
+  const initials = localStorage.getItem("initials");
+  document.getElementById("initials").textContent = initials;
+  let initialsList = document.getElementById("highscores");
+  // appending li to high scores submitted
+  data.forEach((item) => {
+    let liElement = document.createElement("li");
+    liElement.innerText = item;
+    initialsList.appendChild(liElement);
+  });
+};
 
 // points.textContent = finalScore
