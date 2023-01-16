@@ -19,8 +19,6 @@ var points = localStorage.getItem("time");
 // var correct = new Audio(".assets/sfx/correct.wav");
 // var incorrect = new Audio(".assets/sfx/incorrect.wav");
 
-
-
 // function that listens to the Start Quiz button
 startButton.addEventListener("click", function () {
   // Sets interval in variable
@@ -41,45 +39,51 @@ startButton.addEventListener("click", function () {
 
 
 
-
 var displayQuestions = function () {
-  // creating variables for the wav sounds
 
   // delete the .hide class in css so questions appear
   questions.classList.remove("hide");
-  
+
   // Iterate through questions array to display one question and its choices at a time
 
-  // do
-  for (var i = 0; i < quizQuestions.length; i++) {
-    questionTitle.textContent = quizQuestions[i].questionText;
+  do {
+  questionTitle.textContent = quizQuestions[0].questionText;
 
+  for (var i = 0; i < quizQuestions.length; i++) {
     let askedQuestions = quizQuestions[i].options;
-    let list = document.getElementById("choices");
     // appending li to question choices
     askedQuestions.forEach((item) => {
       let li = document.createElement("button");
       li.innerText = item;
-      list.appendChild(li);
+      questionChoices.appendChild(li);
     });
-    li.addEventListener("click", function () {
-      if (data[i] === correctAnswerIndex) {
-        alert("Correct");
-        // correct.play();
-      } else {
-        alert("Wrong");
-        timeEl - 15;
-        // incorrect.play();
-      }
-      questionIndex++;
-    });
+    checkAnswers();
   }
+}
+
+ while
+ (questionIndex === quizQuestions.length ||  timeEl > 0);
+}
+
+var checkAnswers = function () {
+  li[i].addEventListener("click", function () {
+    if (data[i] === quizQuestions.correctAnswerIndex) {
+      var correctAnswer = document.createElement(correct);
+      correctAnswer.textContent = "Correct";
+      document.body.appendChild(correctAnswer);
+      // correct.play();
+    } else {
+      var incorrectAnswer = document.createElement(incorrectAnswer);
+      incorrectAnswer.textContent = "Incorrect";
+      document.body.appendChild(incorrectAnswer);
+      timeEl - 15;
+      // incorrect.play();
+    }
+    questionIndex++;
+    // once an answer is checked, move onto the next question
+    displayQuestions();
+  });
 };
-// while
-//     (questionIndex < quizQuestions.length ||  timeEl >= 0);
-
-
-
 
 // var quizEnd = function () {
 //     // unhide end-screen
@@ -106,6 +110,3 @@ var displayQuestions = function () {
 // };
 
 // points.textContent = finalScore;
-
-
-
