@@ -41,11 +41,10 @@ var displayQuestions = function () {
   // delete the .hide class in css so questions appear
   questions.classList.remove("hide");
 
-
   // Iterate through questions array to display one question and its choices at a time
 
   questionTitle.textContent = quizQuestions[questionIndex].questionText;
-  questionChoices.innerHTML = '';
+  questionChoices.innerHTML = "";
   let askedQuestions = quizQuestions[questionIndex].options;
   // appending li to question choices
   askedQuestions.forEach((item) => {
@@ -70,7 +69,7 @@ var checkAnswers = function (event) {
     correct.play();
   } else {
     feedbackEl.textContent = "Incorrect";
-    secondsLeft -= 15
+    secondsLeft -= 15;
     incorrect.play();
   }
 
@@ -84,7 +83,8 @@ var checkAnswers = function (event) {
 };
 
 var quizEnd = function () {
-    // unhide end-screen
+    questions.remove()
+  // unhide end-screen
   endScreen.classList.remove("hide");
 
   submitButton.addEventListener("click", function (event) {
