@@ -16,8 +16,8 @@ var initials = document.getElementById("initials");
 var finalScore = document.getElementById("final-score");
 var highScores = document.getElementById("highscores");
 var points = localStorage.getItem("time");
-// var correct = new Audio(".assets/sfx/correct.wav");
-// var incorrect = new Audio(".assets/sfx/incorrect.wav");
+var correct = new Audio("../assets/sfx/correct.wav");
+var incorrect = new Audio("../assets/sfx/incorrect.wav");
 
 // function that listens to the Start Quiz button
 startButton.addEventListener("click", function () {
@@ -37,52 +37,52 @@ startButton.addEventListener("click", function () {
   displayQuestions();
 });
 
-
-
 var displayQuestions = function () {
-
   // delete the .hide class in css so questions appear
   questions.classList.remove("hide");
 
   // Iterate through questions array to display one question and its choices at a time
 
-  do {
-  questionTitle.textContent = quizQuestions[0].questionText;
-
-  for (var i = 0; i < quizQuestions.length; i++) {
-    let askedQuestions = quizQuestions[i].options;
-    // appending li to question choices
-    askedQuestions.forEach((item) => {
-      let li = document.createElement("button");
-      li.innerText = item;
-      questionChoices.appendChild(li);
-    });
-    checkAnswers();
-  }
-}
-
- while
- (questionIndex === quizQuestions.length ||  timeEl > 0);
-}
-
-var checkAnswers = function () {
-  li[i].addEventListener("click", function () {
-    if (data[i] === quizQuestions.correctAnswerIndex) {
-      var correctAnswer = document.createElement(correct);
-      correctAnswer.textContent = "Correct";
-      document.body.appendChild(correctAnswer);
-      // correct.play();
-    } else {
-      var incorrectAnswer = document.createElement(incorrectAnswer);
-      incorrectAnswer.textContent = "Incorrect";
-      document.body.appendChild(incorrectAnswer);
-      timeEl - 15;
-      // incorrect.play();
-    }
-    questionIndex++;
-    // once an answer is checked, move onto the next question
-    displayQuestions();
+  questionTitle.textContent = quizQuestions[questionIndex].questionText;
+  let askedQuestions = quizQuestions[questionIndex].options;
+  // appending li to question choices
+  askedQuestions.forEach((item) => {
+    let btn = document.createElement("button");
+    btn.innerText = item;
+    btn.addEventListener("click", checkAnswers);
+    questionChoices.appendChild(btn);
   });
+};
+
+var checkAnswers = function (event) {
+  event.stopPropagation();
+  event.preventDefault();
+  console.log(event);
+  console.log(event.target);
+  var feedbackEl = document.getElementById("feedback");
+  if (
+    event.target.innerHTML ===
+    quizQuestions[questionIndex].options[
+      quizQuestions[questionIndex].correctAnswerIndex
+    ]
+  ) {
+    feedbackEl.textContent = "Correct";
+    correct.play();
+  } else {
+    feedbackEl.textContent = "Incorrect";
+    timeEl - 15;
+    incorrect.play();
+  }
+  //check if you're done with the quiz or out of time?
+  [0, 1, 2, 3] === 4;
+
+  if (questionIndex === quizQuestions.length - 1 || secondsLeft <= 0) {
+    quizEnd();
+    return;
+  }
+  // once an answer is checked, move onto the next question
+  questionIndex++;
+  displayQuestions();
 };
 
 // var quizEnd = function () {
@@ -109,4 +109,4 @@ var checkAnswers = function () {
 //   });
 // };
 
-// points.textContent = finalScore;
+// points.textContent = finalScore
