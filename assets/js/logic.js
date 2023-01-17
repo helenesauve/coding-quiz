@@ -74,35 +74,39 @@ var checkAnswers = function (event) {
 
   if (questionIndex === quizQuestions.length - 1 || secondsLeft <= 0) {
     quizEnd();
-    return secondsLeft;
+    return;
   }
   // once an answer is checked, move onto the next question
   questionIndex++;
   displayQuestions();
 };
 
+var quizEnd = function () {
 var points = secondsLeft;
 
 var finalScore = document.getElementById("final-score");
 finalScore.textContent = points;
 
-
-var quizEnd = function () {
     // removing last question
   questions.remove();
   // unhide end-screen
   endScreen.classList.remove("hide");
 
-  
 
   submitButton.addEventListener("click", function (event) {
     event.preventDefault();
-    var input = document.getElementById("initials").value.trim();
-    localStorage.setItem("initials", input);
+    var user = {
+        initials: document.getElementById("initials").value.trim(),
+        points: points
+    }
+      // set new submission
+      localStorage.setItem("user", JSON.stringify(user));
 
-    localStorage.getItem("initials");
-    highScores.textContent = input;
-    // localStorage.setItem("Points", points);
+    // get most recent submission
+    var lastUser = JSON.parse(localStorage.getItem("user"));
+    userFirstNameSpan.textContent = lastUser.initials;
+    userLastNameSpan.textContent = lastUser.lastName;
+
     //sending information to the highscores.html file
     window.location.href = "highscores.html";
   });
