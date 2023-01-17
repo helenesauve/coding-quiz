@@ -12,12 +12,11 @@ var questionTitle = document.getElementById("question-title");
 var questionChoices = document.getElementById("choices");
 var questions = document.getElementById("questions");
 var questionIndex = 0;
-var initials = document.getElementById("initials");
 var finalScore = document.getElementById("final-score");
 var highScores = document.getElementById("highscores");
-var points = localStorage.getItem("time");
 var correct = new Audio("../assets/sfx/correct.wav");
 var incorrect = new Audio("../assets/sfx/incorrect.wav");
+
 
 // function that listens to the Start Quiz button
 startButton.addEventListener("click", function () {
@@ -75,36 +74,47 @@ var checkAnswers = function (event) {
 
   if (questionIndex === quizQuestions.length - 1 || secondsLeft <= 0) {
     quizEnd();
-    return;
+    return secondsLeft;
   }
   // once an answer is checked, move onto the next question
   questionIndex++;
   displayQuestions();
 };
 
+var points = secondsLeft;
+
+var finalScore = document.getElementById("final-score");
+finalScore.textContent = points;
+
+
 var quizEnd = function () {
-    questions.remove()
+    // removing last question
+  questions.remove();
   // unhide end-screen
   endScreen.classList.remove("hide");
 
+  
+
   submitButton.addEventListener("click", function (event) {
     event.preventDefault();
-    var initialsValue = initials.value;
-    localStorage.setItem("Initials", initialsValue);
-    // sending information to the highscores.html file
+    var input = document.getElementById("initials").value.trim();
+    localStorage.setItem("initials", input);
+
+    localStorage.getItem("initials");
+    highScores.textContent = input;
+    // localStorage.setItem("Points", points);
+    //sending information to the highscores.html file
     window.location.href = "highscores.html";
   });
 
+
   //getting information from index.html in highscore html
-  const initials = localStorage.getItem("initials");
   document.getElementById("initials").textContent = initials;
-  let initialsList = document.getElementById("highscores");
+  var initialsList = document.getElementById("highscores");
   // appending li to high scores submitted
-  data.forEach((item) => {
+  initialsList.forEach((item) => {
     let liElement = document.createElement("li");
     liElement.innerText = item;
     initialsList.appendChild(liElement);
   });
 };
-
-// points.textContent = finalScore

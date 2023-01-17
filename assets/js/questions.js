@@ -9,22 +9,22 @@ var quizQuestions = [
   {
     questionText: "2. Arrays in Javascript can be used to store",
     options: [
-      "numbers and strings",
-      "other arrays",
-      "booleans",
-      "all of the above",
+      "Numbers and strings",
+      "Other arrays",
+      "Booleans",
+      "All of the above",
     ],
     correctAnswerIndex: 3,
   },
   {
     questionText: "3. The condition in an if / else statement is enclosed with:",
-    options: ["quotes", "curly brackets", "parenthesis", "square brackets"],
+    options: ["Quotes", "Curly brackets", "Parenthesis", "Square brackets"],
     correctAnswerIndex: 2,
   },
   {
     questionText:
       "4. String values must be assigned within ----- when being assigned to variable",
-    options: ["quotes", "curly brackets", "square brackets", "parenthesis"],
+    options: ["Quotes", "Curly brackets", "Square brackets", "Parenthesis"],
     correctAnswerIndex: 0,
   },
 ];
