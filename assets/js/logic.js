@@ -17,7 +17,6 @@ var highScores = document.getElementById("highscores");
 var correct = new Audio("../assets/sfx/correct.wav");
 var incorrect = new Audio("../assets/sfx/incorrect.wav");
 
-
 // function that listens to the Start Quiz button
 startButton.addEventListener("click", function () {
   // Sets interval in variable
@@ -82,35 +81,37 @@ var checkAnswers = function (event) {
 };
 
 var quizEnd = function () {
-var points = secondsLeft;
+  var points = secondsLeft;
 
-var finalScore = document.getElementById("final-score");
-finalScore.textContent = points;
+  var finalScore = document.getElementById("final-score");
+  finalScore.textContent = points;
 
-    // removing last question
+  // removing last question
   questions.remove();
   // unhide end-screen
   endScreen.classList.remove("hide");
 
-
   submitButton.addEventListener("click", function (event) {
     event.preventDefault();
     var user = {
-        initials: document.getElementById("initials").value.trim(),
-        points: points
-    }
-      // set new submission
-      localStorage.setItem("user", JSON.stringify(user));
+      initials: document.getElementById("initials").value.trim(),
+      points: points
+    };
+    // set new submission
+    localStorage.setItem("user", JSON.stringify(user));
 
     // get most recent submission
     var lastUser = JSON.parse(localStorage.getItem("user"));
-    userFirstNameSpan.textContent = lastUser.initials;
-    userLastNameSpan.textContent = lastUser.lastName;
+
+    var initialsProvided = user.intials;
+    var endPoints = user.points
+
+    userFirstNameSpan.textContent = initialsProvided;
+    userLastNameSpan.textContent = endPoints;
 
     //sending information to the highscores.html file
     window.location.href = "highscores.html";
   });
-
 
   //getting information from index.html in highscore html
   document.getElementById("initials").textContent = initials;
