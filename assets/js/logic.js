@@ -1,11 +1,7 @@
-// When start button is clicked, timer starts and first question appears
 var timeEl = document.querySelector(".timer");
 var secondsLeft = 76;
-// creating a variable for the start button
 var startButton = document.getElementById("start");
-// creating a variable for start screen
 var startScreen = document.getElementById("start-screen");
-//creating a variable for end screen
 var endScreen = document.getElementById("end-screen");
 var submitButton = document.getElementById("submit");
 var questionTitle = document.getElementById("question-title");
@@ -27,7 +23,6 @@ startButton.addEventListener("click", function () {
     if (secondsLeft === 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
-      // display score and give the user the ability to save their initials and their score
     }
   }, 1000);
   // remove all text from start-screen, so the page is empty
@@ -67,7 +62,7 @@ var checkAnswers = function (event) {
     correct.play();
   } else {
     feedbackEl.textContent = "Incorrect";
-    secondsLeft -= 15;
+    secondsLeft -= 10;
     incorrect.play();
   }
 
@@ -95,7 +90,7 @@ var quizEnd = function () {
     event.preventDefault();
     var user = {
       initials: document.getElementById("initials").value.trim(),
-      points: points
+      points: points,
     };
     // set new submission
     localStorage.setItem("user", JSON.stringify(user));
@@ -103,11 +98,11 @@ var quizEnd = function () {
     // get most recent submission
     var lastUser = JSON.parse(localStorage.getItem("user"));
 
-    var initialsProvided = user.intials;
-    var endPoints = user.points
+    var initialsProvided = lastUser.initials;
+    var endPoints = user.points;
 
-    userFirstNameSpan.textContent = initialsProvided;
-    userLastNameSpan.textContent = endPoints;
+    initialsProvided.textContent = initialsProvided;
+    endPoints.textContent = endPoints;
 
     //sending information to the highscores.html file
     window.location.href = "highscores.html";
@@ -116,10 +111,4 @@ var quizEnd = function () {
   //getting information from index.html in highscore html
   document.getElementById("initials").textContent = initials;
   var initialsList = document.getElementById("highscores");
-  // appending li to high scores submitted
-  initialsList.forEach((item) => {
-    let liElement = document.createElement("li");
-    liElement.innerText = item;
-    initialsList.appendChild(liElement);
-  });
 };

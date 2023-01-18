@@ -15,7 +15,7 @@ This coding quiz is challenge 6 of the Front-End Web Developer bootcamp, which c
 - The user is then asked to provide their initials, which are then stored alongside their points, in the highscores.html file.
 
 
-The programme looks like the below and the application can be found live [here](https://TBC)
+The programme looks like the below and the application can be found live [here](https://helenesauve.github.io/coding-quiz/)
 
 ![Coding quiz application](./assets/screenshot.png)
 
